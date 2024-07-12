@@ -1,0 +1,72 @@
+/**
+*
+* {{ properCase sliceName }} Slice - Created with Plop
+*
+*/
+
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+export const {{camelCase sliceName}}Slice = createApi({
+  reducerPath: `{{camelCase sliceName}}Reducer`,
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_SERVER_URL,
+  }),
+  tagTypes: ["fetch"],
+  endpoints: (builder) => {
+    return {
+      fetch{{pascalCase sliceName}}: builder.query({
+        providesTags: () => {
+          return ["fetch"];
+        },
+        query: (id) => {
+          return {
+            url: `/{{lowerCase sliceName}}/get/${id}`,
+            method: "GET",
+          };
+        },
+      }),
+      add{{pascalCase sliceName}}: builder.mutation({
+        invalidatesTags: () => {
+          return ["fetch"];
+        },
+        query: (data) => {
+          return {
+            url: "/{{lowerCase sliceName}}/create",
+            method: "POST",
+            body: data,
+          };
+        },
+      }),
+      edit{{pascalCase sliceName}}: builder.mutation({
+        invalidatesTags: () => {
+          return ["fetch"];
+        },
+        query: ({ id, data }) => {
+          return {
+            url: "/{{lowerCase sliceName}}/update/" + id,
+            method: "PATCH",
+            body: data,
+          };
+        },
+      }),
+      delete{{pascalCase sliceName}}: builder.mutation({
+        invalidatesTags: () => {
+          return ["fetch"];
+        },
+        query: (id) => {
+          return {
+            url: "/{{lowerCase sliceName}}/delete/" + id,
+            method: "DELETE",
+          };
+        },
+      }),
+    };
+  },
+});
+
+export const {
+  useFetch{{pascalCase sliceName}}Query,
+  useAdd{{pascalCase sliceName}}Mutation,
+  useEdit{{pascalCase sliceName}}Mutation,
+  useDelete{{pascalCase sliceName}}Mutation
+} = {{camelCase sliceName}}Slice;

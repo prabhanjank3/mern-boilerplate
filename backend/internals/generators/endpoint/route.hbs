@@ -1,0 +1,28 @@
+/**
+*
+* {{ properCase name }} Routes
+*
+*/
+
+const express = require('express');
+const router = express.Router();
+const {{camelCase name}}Controller = require('../../controllers/sequelize/{{lowerCase name}}.controller');
+
+/**
+*  Creates new {{ lowerCase name }}
+*/
+router.post('/create', {{camelCase name}}Controller.create{{pascalCase name}});
+/**
+*  Updates existing {{ lowerCase name }}
+*/
+router.post('/update', {{camelCase name}}Controller.update{{pascalCase name}});
+/**
+*  Deletes {{ lowerCase name }}
+*/
+router.get('/delete', {{camelCase name}}Controller.delete{{pascalCase name}});
+/**
+*  Fetches single {{ lowerCase name }} by id
+*/
+router.get('/get/:id', {{camelCase name}}Controller.get{{pascalCase name}});
+
+module.exports = router;

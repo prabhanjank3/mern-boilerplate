@@ -1,0 +1,105 @@
+/**
+*
+* {{ properCase name }} Controller
+*
+*/
+
+const db = require("../../models/sequelize/index");
+const {{pascalCase name}} = db.{{lowerCase name}};
+
+/**
+* Create new {{ lowerCase name }}
+*/
+exports.create{{pascalCase name}} = (req, resp) => {
+  {{pascalCase name}}.create(req.body)
+    .then((data) => {
+      resp.status(201).send(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      resp.status(500).send(err);
+    });
+};
+
+/**
+* Update existing {{ lowerCase name }}
+*/
+exports.update{{pascalCase name}} = (req, resp) => {
+  {{pascalCase name}}.update(req.body, { where: { id: req.params.id } })
+    .then(() => {
+      resp.status(200).send({
+        message: "{{pascalCase name}} updated Successfully",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      resp.status(500).send({
+        message: err.message || "Some error occurred while updating {{lowerCase name}}.",
+      });
+    });
+};
+
+/**
+* Deletes {{ lowerCase name }} specified by id in params
+*/
+exports.delete{{pascalCase name}} = (req, resp) => {
+  {{pascalCase name}}.destroy({ where: { id: req.params.id } })
+    .then((result) => {
+      if (result === 1) {
+        resp.status(200).send({
+          message: "{{pascalCase name}} deleted Successfully",
+        });
+      } else {
+        resp.status(500).send({
+          message: "Some error occurred while deleting {{lowerCase name}}.",
+        });
+      }
+    })
+    .catch((err) => {
+      resp.status(500).send({
+        message: err.message || "Some error occurred while deleting {{lowerCase name}}.",
+      });
+    });
+};
+
+/**
+* Fetches single {{ lowerCase name }} by id in params
+*/
+exports.get{{pascalCase name}} = (req, resp) => {
+  {{pascalCase name}}.findOne({ where: { id: req.params.id } })
+    .then((data) => {
+      if (data) {
+        resp.status(201).send(data);
+      } else {
+        resp.status(401).send({ message: "{{pascalCase name}} Not Found" });
+      }
+    })
+    .catch((err) => {
+      resp.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving the {{lowerCase name}}.",
+      });
+    });
+};
+
+/**
+* Fetches all {{ lowerCase name }} matching by query
+*/
+exports.get{{pascalCase name}}ByQuery = (req, resp) => {
+    {{pascalCase name}}.findAll({where:{Date:req.query}})
+    .then(data => {
+        if(data)
+        {
+            resp.status(201).send(data);
+        }
+        else{
+            resp.status(401).send({message:'{{pascalCase name}}s Not Found'})
+        }
+    })
+    .catch(err => {
+        resp.status(500).send({
+        message:
+            err.message || "Some error occurred while retrieving the {{lowerCase name}}."
+        });
+    });
+}

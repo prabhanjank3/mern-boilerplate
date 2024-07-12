@@ -1,0 +1,23 @@
+/**
+*
+* {{ properCase name }} Model
+*
+*/
+
+module.exports = (sequelize, Sequelize) => {
+  const {{pascalCase name}} = sequelize.define("{{lowerCase name}}s", {
+    id: {
+      type: Sequelize.UUID,
+      defaultValue: Sequelize.UUIDV4,
+      primaryKey: true,
+    },
+    {{#each fields}}
+    {{name}}: {
+      type: Sequelize.{{constantCase type}}
+    },
+    {{/each}}
+  }, {
+    timestamps: true,
+  });
+  return {{pascalCase name}};
+};
