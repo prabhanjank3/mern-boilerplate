@@ -30,6 +30,8 @@ import { theme as muitheme } from 'styles/theme/MuiTheme';
 
 import reportWebVitals from 'reportWebVitals';
 
+import CssBaseline from '@mui/material/CssBaseline';
+
 // Initialize languages
 import './locales/i18n';
 
@@ -52,6 +54,7 @@ const theme = createTheme(muitheme);
 root.render(
   <Provider store={store}>
     <MuiThemeProvider theme={theme}>
+      <CssBaseline />
       <ThemeProvider>
         <HelmetProvider>
           <React.StrictMode>

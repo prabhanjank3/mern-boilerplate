@@ -15,7 +15,7 @@ const handler = (err, req, res) => {
     stack: err.stack,
   };
 
-  if (env !== 'development') {
+  if (env !== 'dev') {
     delete response.stack;
   }
 

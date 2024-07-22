@@ -18,7 +18,7 @@
     "jsx": "react-jsx",
     "baseUrl": "./src"
   },
-  "include": ["src", "internals/startingTemplate/**/*"],
+  "include": ["src", "src/types", "internals/startingTemplate/**/*"],
   "ts-node": {
     "compilerOptions": {
       "esModuleInterop": true,
