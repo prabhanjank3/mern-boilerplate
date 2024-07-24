@@ -9,13 +9,16 @@
 import * as React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Apple } from './components/Apple';
+import DefaultLayout from './layouts/Default';
 
 export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Apple />} />
-        <Route path="*" element={<>Another</>} />
+        <Route path="/d" element={<DefaultLayout />}>
+          <Route path="*" element={<Apple />} />
+          <Route path="another" element={<>Another</>} />
+        </Route>
       </Routes>
       {/* <GlobalStyle /> */}
     </BrowserRouter>

@@ -16,6 +16,7 @@ module.exports = {
       'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },
     ],
+    '@typescript-eslint/no-explicit-any': ['error'],
   },
   overrides: [
     {

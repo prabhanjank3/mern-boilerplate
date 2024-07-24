@@ -1,5 +1,8 @@
 import type { Theme, Palette } from '@mui/material';
-import { Typography } from '@mui/material/styles/createTypography';
+import {
+  CSSProperties,
+  Typography,
+} from '@mui/material/styles/createTypography';
 import { rgb } from 'color';
 import OswaldTTF from 'assets/fonts/Oswald-VariableFont_wght.ttf';
 import Roboto from 'assets/fonts/Roboto-Regular.ttf';
@@ -11,7 +14,7 @@ interface CustomTypography
     Typography,
     'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body1' | 'body2'
   > {
-  logo: any;
+  logo: CSSProperties;
 }
 
 export type CustomThemeType = RequiredTypesFromTheme & {
@@ -99,14 +102,14 @@ export const theme: CustomThemeType = {
     secondary: {
       main: '#39C2D7',
       contrastText: 'white',
-      light: '',
-      dark: '',
+      light: '#72cad8',
+      dark: '#03b9d5',
     },
     error: {
       main: '#E53935',
       contrastText: 'white',
-      light: '',
-      dark: '',
+      light: '#e6625f',
+      dark: '#e10602',
     },
     warning: {
       main: '#FB8C00',

@@ -4,7 +4,7 @@
  *
  */
 /* eslint-disable no-console */
-import { Box, Typography, useTheme } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
 import './index.css';
 import PORTALDATA from 'variables/application-metadata';
@@ -17,7 +17,6 @@ import { Link, useNavigate } from 'react-router-dom';
 // import Avatar from '@mui/material/Avatar';
 
 export default function Navbar() {
-  const theme: any = useTheme();
   const navigate = useNavigate();
   // const dispatch = useDispatch();
   // const { loggedInUser: user } = useSelector((state: any) => state.user);
@@ -29,8 +28,8 @@ export default function Navbar() {
   return (
     <Box
       sx={{
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
+        backgroundColor: 'primary.main',
+        color: 'primary.contrastText',
       }}
       className="navbar-container"
     >
@@ -49,9 +48,9 @@ export default function Navbar() {
         >
           <Typography
             sx={{
-              fontSize: theme.typography.logo.fontSize,
-              fontFamily: theme.typography.logo.fontFamily,
-              fontWeight: theme.typography.logo.fontWeight,
+              fontSize: 'logo.fontSize',
+              fontFamily: 'logo.fontFamily',
+              fontWeight: 'logo.fontWeight',
             }}
           >
             {PORTALDATA.name}
@@ -76,9 +75,7 @@ export default function Navbar() {
           <div>Hello</div>
         ) : (
           <Link to={'/login'}>
-            <Typography sx={{ color: theme.palette.secondary.main }}>
-              Login
-            </Typography>
+            <Typography sx={{ color: 'secondary.main' }}>Login</Typography>
           </Link>
         )}
       </div>

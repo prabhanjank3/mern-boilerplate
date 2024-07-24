@@ -1,23 +1,22 @@
 import React from 'react';
-import { Typography, useTheme } from '@mui/material';
+import { Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import '../index.css';
 import { Link } from 'react-router-dom';
 
 export default function MenuItem({ item }) {
-  const theme: any = useTheme();
   return (
     <div className="menu-item">
       <Link to={item.url} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="menu-item-container">
           <Typography
             sx={{
-              color: theme.palette.primary.contrastText,
-              fontFamily: theme.typography.body1.fontFamily,
-              fontWeight: theme.typography.body1.fontWeight,
-              fontSize: theme.typography.body1.fontSize,
+              color: 'primary.contrastText',
+              fontFamily: 'body1.fontFamily',
+              fontWeight: 'body1.fontWeight',
+              fontSize: 'body1.fontSize',
               ':hover': {
-                color: 'secondary.main', // theme.palette.primary.main
+                color: 'secondary.main',
               },
             }}
             className="navbar-menu-item"
@@ -30,7 +29,7 @@ export default function MenuItem({ item }) {
       {item?.child ? (
         <div
           className="menu-item-content"
-          style={{ backgroundColor: theme.palette.primary.dark }}
+          style={{ backgroundColor: 'primary.dark' }}
         >
           {item.child.map(child => {
             return (
@@ -42,12 +41,12 @@ export default function MenuItem({ item }) {
                 <div className="menu-subitem">
                   <Typography
                     sx={{
-                      color: theme.palette.primary.contrastText,
-                      fontFamily: theme.typography.primary.fontFamily,
-                      fontWeight: theme.typography.primary.fontWeight,
-                      fontSize: theme.typography.primary.fontSize,
+                      color: 'primary.contrastText',
+                      fontFamily: 'primary.fontFamily',
+                      fontWeight: 'primary.fontWeight',
+                      fontSize: 'primary.fontSize',
                       ':hover': {
-                        color: 'secondary.main', // theme.palette.primary.main
+                        color: 'secondary.main',
                       },
                     }}
                   >
