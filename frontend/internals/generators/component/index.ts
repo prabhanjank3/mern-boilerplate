@@ -4,7 +4,7 @@
 
 import { Actions, PlopGeneratorConfig } from 'node-plop';
 import inquirer from 'inquirer';
-
+import Handlebars from 'handlebars';
 import { pathExists } from '../utils';
 import { baseGeneratorPath } from '../paths';
 
@@ -13,7 +13,7 @@ inquirer.registerPrompt('directory', require('inquirer-directory'));
 export const enum ComponentProptNames {
   'componentName' = 'componentName',
   path = 'path',
-  wantTests = 'wantTests'
+  wantTests = 'wantTests',
 }
 
 type Answers = { [P in ComponentProptNames]: string };
@@ -24,20 +24,20 @@ export const componentGenerator: PlopGeneratorConfig = {
     {
       type: 'input',
       name: ComponentProptNames.componentName,
-      message: 'What should it be called?'
+      message: 'What should it be called?',
     },
     {
       type: 'directory',
       name: ComponentProptNames.path,
       message: 'Where do you want it to be created?',
-      basePath: `${baseGeneratorPath}`
+      basePath: `${baseGeneratorPath}`,
     } as any,
     {
       type: 'confirm',
       name: ComponentProptNames.wantTests,
       default: false,
-      message: 'Do you want to have tests?'
-    }
+      message: 'Do you want to have tests?',
+    },
   ],
   actions: data => {
     const answers = data as Answers;
@@ -50,13 +50,14 @@ export const componentGenerator: PlopGeneratorConfig = {
     if (pathExists(actualComponentPath)) {
       throw new Error(`Component '${answers.componentName}' already exists`);
     }
+
     const actions: Actions = [
       {
         type: 'add',
         path: `${componentPath}/index.tsx`,
         templateFile: './component/index.tsx.hbs',
-        abortOnFail: true
-      }
+        abortOnFail: true,
+      },
     ];
 
     if (answers.wantTests) {
@@ -64,15 +65,15 @@ export const componentGenerator: PlopGeneratorConfig = {
         type: 'add',
         path: `${componentPath}/__tests__/index.test.tsx`,
         templateFile: './component/index.test.tsx.hbs',
-        abortOnFail: true
+        abortOnFail: true,
       });
     }
 
     actions.push({
       type: 'prettify',
-      data: { path: `${actualComponentPath}/**` }
+      data: { path: `${componentPath}/**` },
     });
 
     return actions;
-  }
+  },
 };

@@ -11,7 +11,7 @@ module.exports = {
   rules: {
     'prettier/prettier': ['error', prettierOptions],
     'import/no-unused-modules': 'error',
-    'no-console': 'error',
+    'no-console': 'warn',
     'no-unused-vars': [
       'error',
       { vars: 'all', args: 'after-used', ignoreRestSiblings: false },

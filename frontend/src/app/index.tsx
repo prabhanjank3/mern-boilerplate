@@ -15,8 +15,8 @@ export function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/d" element={<DefaultLayout />}>
-          <Route path="*" element={<Apple />} />
+        <Route path="/" element={<DefaultLayout />}>
+          <Route path="" element={<Apple />} />
           <Route path="another" element={<>Another</>} />
         </Route>
       </Routes>
