@@ -24,7 +24,9 @@ import { configureAppStore } from 'store/configureStore';
 
 import { ThemeProvider } from 'styles/theme/ThemeProvider';
 
-import { createTheme, ThemeProvider as MuiThemeProvider } from '@mui/material';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material';
+
+import { createTheme } from '@mui/material/styles';
 
 import { theme as muitheme } from 'styles/theme/MuiTheme';
 

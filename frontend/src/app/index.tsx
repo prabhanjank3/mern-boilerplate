@@ -20,7 +20,6 @@ export function App() {
           <Route path="another" element={<>Another</>} />
         </Route>
       </Routes>
-      {/* <GlobalStyle /> */}
     </BrowserRouter>
   );
 }

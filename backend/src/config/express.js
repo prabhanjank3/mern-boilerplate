@@ -9,6 +9,7 @@ const passport = require('passport');
 const routes = require('../api/routes/v1');
 const { logs } = require('./vars');
 const strategies = require('./passport');
+// eslint-disable-next-line no-unused-vars
 const error = require('../api/middlewares/error');
 
 /**
@@ -46,13 +47,13 @@ passport.use('google', strategies.google);
 // mount api v1 routes
 app.use('/v1', routes);
 
-// if error is not an instanceOf APIError, convert it.
-app.use(error.converter);
+// // if error is not an instanceOf APIError, convert it.
+// app.use(error.converter);
 
-// catch 404 and forward to error handler
-app.use(error.notFound);
+// // catch 404 and forward to error handler
+// app.use(error.notFound);
 
-// error handler, send stacktrace only during development
-app.use(error.handler);
+// // error handler, send stacktrace only during development
+// app.use(error.handler);
 
 module.exports = app;

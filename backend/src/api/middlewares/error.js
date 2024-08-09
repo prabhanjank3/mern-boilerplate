@@ -10,7 +10,7 @@ const { env } = require('../../config/vars');
 const handler = (err, req, res) => {
   const response = {
     code: err.status,
-    message: err.message || httpStatus[err.status],
+    message: err.message || err.status,
     errors: err.errors,
     stack: err.stack,
   };
@@ -30,7 +30,6 @@ exports.handler = handler;
  */
 exports.converter = (err, req, res) => {
   let convertedError = err;
-
   if (err instanceof expressValidation.ValidationError) {
     convertedError = new APIError({
       message: 'Validation Error',

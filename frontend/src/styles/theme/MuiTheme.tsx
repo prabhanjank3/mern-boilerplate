@@ -3,7 +3,6 @@ import {
   CSSProperties,
   Typography,
 } from '@mui/material/styles/createTypography';
-import { rgb } from 'color';
 import OswaldTTF from 'assets/fonts/Oswald-VariableFont_wght.ttf';
 import Roboto from 'assets/fonts/Roboto-Regular.ttf';
 
@@ -21,7 +20,7 @@ export type CustomThemeType = RequiredTypesFromTheme & {
   typography: CustomTypography;
   palette: Pick<
     Palette,
-    'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success' | 'text'
+    'primary' | 'secondary' | 'error' | 'warning' | 'info' | 'success'
   >;
 };
 
@@ -95,40 +94,39 @@ export const theme: CustomThemeType = {
   palette: {
     primary: {
       main: '#464547',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       dark: '#333333',
       light: '#BDC0CC',
     },
     secondary: {
       main: '#39C2D7',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       light: '#72cad8',
       dark: '#03b9d5',
     },
     error: {
       main: '#E53935',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       light: '#e6625f',
       dark: '#e10602',
     },
     warning: {
       main: '#FB8C00',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       light: '',
       dark: '',
     },
     info: {
       main: '#2196F3',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       light: '',
       dark: '',
     },
     success: {
       main: '#4CAF50',
-      contrastText: 'white',
+      contrastText: '#ffffff',
       light: '',
       dark: '',
     },
-    text: rgb(13, 13, 13),
   },
 };

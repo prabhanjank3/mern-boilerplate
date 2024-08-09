@@ -1062,6 +1062,15 @@ axios@^0.21.1:
   dependencies:
     follow-redirects "^1.14.0"
 
+axios@^1.6.5:
+  version "1.7.2"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/axios/-/axios-1.7.2.tgz#b625db8a7051fbea61c35a3cbb3a1daa7b9c7621"
+  integrity sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
+
 babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
@@ -3062,7 +3071,7 @@ fn.name@1.x.x:
   resolved "https://packages.atlassian.com/api/npm/npm-remote/fn.name/-/fn.name-1.1.0.tgz#26cad8017967aea8731bc42961d04a3d5988accc"
   integrity sha512-GRnmB5gPyJpAhTQdSZTSp9uaPSvl09KoYcMQtsB9rQoOmzs9dH6ffeccH+Z+cv6P68Hu5bC6JjRh4Ah/mHSNRw==
 
-follow-redirects@^1.14.0:
+follow-redirects@^1.14.0, follow-redirects@^1.15.6:
   version "1.15.6"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/follow-redirects/-/follow-redirects-1.15.6.tgz#7f815c0cda4249c74ff09e95ef97c23b5fd0399b"
   integrity sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==
@@ -3415,6 +3424,11 @@ growl@1.10.5:
   resolved "https://packages.atlassian.com/api/npm/npm-remote/growl/-/growl-1.10.5.tgz#f2735dc2283674fa67478b10181059355c369e5e"
   integrity sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==
 
+hamming-distance@^1.0.0:
+  version "1.0.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/hamming-distance/-/hamming-distance-1.0.0.tgz#39bfa46c61f39e87421e4035a1be4f725dd7b931"
+  integrity sha512-hYz2IIKtyuZGfOqCs7skNiFEATf+v9IUNSOaQSr6Ll4JOxxWhOvXvc3mIdCW82Z3xW+zUoto7N/ssD4bDxAWoA==
+
 handlebars@^4.4.3, handlebars@^4.7.7:
   version "4.7.8"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/handlebars/-/handlebars-4.7.8.tgz#41c42c18b1be2365439188c77c6afae71c0cd9e9"
@@ -3714,6 +3728,18 @@ image-size@^0.7.3:
   version "0.7.5"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/image-size/-/image-size-0.7.5.tgz#269f357cf5797cb44683dfa99790e54c705ead04"
   integrity sha512-Hiyv+mXHfFEP7LzUL/llg9RwFxxY+o9N3JVLIeG5E7iFIFAalxvRU9UZthBdYDEVnzHMgjnKJPPpay5BWf1g9g==
+
+imagekit@^5.0.1:
+  version "5.0.1"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/imagekit/-/imagekit-5.0.1.tgz#28ab7d6ea406e02f7349745a60829e09412b9e74"
+  integrity sha512-TKi2k61KcB2q7yp+MAC1IXfrrC/434oZN5AJ7IJjGxrwOSieSTpXMK0GLbA9hwNv1oODjVAWolBX9gKjtmfHrw==
+  dependencies:
+    axios "^1.6.5"
+    form-data "^4.0.0"
+    hamming-distance "^1.0.0"
+    lodash "^4.17.15"
+    tslib "^2.4.0"
+    uuid "^8.3.2"
 
 import-fresh@^2.0.0:
   version "2.0.0"
@@ -7742,7 +7768,7 @@ tslib@^1.9.0:
   resolved "https://packages.atlassian.com/api/npm/npm-remote/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.1:
+tslib@^2.0.1, tslib@^2.4.0:
   version "2.6.3"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/tslib/-/tslib-2.6.3.tgz#0438f810ad7a9edcde7a241c3d80db693c8cbfe0"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==

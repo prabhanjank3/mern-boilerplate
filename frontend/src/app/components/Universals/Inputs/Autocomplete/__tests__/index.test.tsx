@@ -138,4 +138,22 @@ describe('AutocompleteInputField', () => {
     );
     expect(screen.getByLabelText('Test Label')).toHaveValue('');
   });
+
+  it('opens dropdown on click and calls onChange with correct values when an option is selected', async () => {
+    const handleChange = jest.fn();
+    render(
+      <AutocompleteInputField
+        name="test"
+        label="Test Label"
+        options={mockOptions}
+        value={null}
+        onChange={handleChange}
+        meta={{ isValid: true, messages: [] }}
+      />,
+    );
+    const input = screen.getByRole('button');
+    fireEvent.click(input);
+    fireEvent.click(screen.getByText('Option 1'));
+    expect(handleChange).toHaveBeenCalledWith('test', '1');
+  });
 });

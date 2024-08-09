@@ -1,0 +1,82 @@
+.editor-menu-item {
+    color: gray;
+    cursor: "pointer";
+    margin-right: 20px
+  }
+  .menu-item:hover {
+    background-color: #f8f9fa;
+  }
+  .menu-item.active {
+    background-color: #e9ecef;
+  }
+  .tiptap {
+    background-color: white;
+  }
+  .tiptap p.is-empty:first-of-type::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  .tiptap h1.is-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+  .ProseMirror:focus {
+    outline: none;
+  }
+  .code-block{
+    font-family: 'Fira Code', monospace !important;
+    background: #282a36;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .code{
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 14px;
+    background-color: #f7f7f7;
+    padding-top: 10px;  
+    padding-bottom: 10px;
+    color: brown;  
+  }
+  .flexbox-fix{
+    display:none !important
+  }
+  .menu-divider {
+    display: inline;
+    margin-right: 10px !important;
+  }
+
+  .selectedCell:after {
+    background: rgba(200, 200, 255, 0.4);
+    content: "";
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+  }
+  
+  .column-resize-handle {
+    background-color: rgb(43, 53, 60);
+    bottom: -2px;
+    position: absolute;
+    right: -2px;
+    pointer-events: none;
+    top: 0;
+    width: 4px;
+  }

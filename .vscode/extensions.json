@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "styled-components.vscode-styled-components",
-    "orta.vscode-jest"
+    "orta.vscode-jest",
+    "coding-beauty.coding-beauty-assistant"
   ]
 }

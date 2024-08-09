@@ -5,6 +5,7 @@ const appleRoutes = require('./apple.route');
 const entryRoutes = require('./entry.route');
 const userRoutes = require('./user.route');
 const authRoutes = require('./auth.route');
+const imagekitRoutes = require('./imagekit.route');
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.use('/apple', appleRoutes);
 router.use('/entry', entryRoutes);
 router.use('/users', userRoutes);
 router.use('/auth', authRoutes);
+router.use('/imagekit', imagekitRoutes);
 
 module.exports = router;
