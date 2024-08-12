@@ -10,6 +10,7 @@ pipelines:
     - parallel:
         - step:
             name: "Test Frontend"
+            image: node:16-buster
             script:
               - "cd frontend"
               - "yarn install"
