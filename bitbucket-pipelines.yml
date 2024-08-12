@@ -9,9 +9,11 @@ pipelines:
   default:
     - parallel:
         - step:
-            name: "Build and Test"
+            name: "Test Frontend"
             script:
-              - "cd frontend && yarn test"
+              - "cd frontend"
+              - "yarn install"
+              - "yarn test"
         - step:
             name: "Lint"
             script:
