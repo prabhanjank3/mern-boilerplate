@@ -28,11 +28,11 @@ export default function SelectField({
   placeholder,
   extraAttributes = {},
 }: SelectProps) {
-  const [value, setValue] = useState(valueProp || options[0]?.value);
+  const [value, setValue] = useState(valueProp ? valueProp : options[0]?.value);
 
   useEffect(() => {
-    setValue(valueProp);
-  }, [valueProp]);
+    setValue(valueProp ? valueProp : options[0]?.value);
+  }, [valueProp, options]);
 
   const handleChange = (event: SelectChangeEvent<unknown>) => {
     setValue(event.target.value);

@@ -88,7 +88,7 @@ export function EditorMenu({ editor }: Props) {
         value={
           editor?.getAttributes('heading').level
             ? editor?.getAttributes('heading').level
-            : ''
+            : null
         }
         onChange={(name, value) => {
           if (value === 7) {

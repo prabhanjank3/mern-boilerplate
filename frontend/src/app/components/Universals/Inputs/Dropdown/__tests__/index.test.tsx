@@ -37,7 +37,7 @@ describe('SelectField Component', () => {
     render(<SelectField {...defaultProps} />);
     fireEvent.mouseDown(screen.getByLabelText('Select an option'));
     options.forEach(option => {
-      expect(screen.getByText(option.label)).toBeInTheDocument();
+      expect(screen.getAllByText(option.label)[0]).toBeInTheDocument();
     });
   });
 

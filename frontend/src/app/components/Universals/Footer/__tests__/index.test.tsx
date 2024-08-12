@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { Footer } from '..';
+import Footer from '..';
 
 describe('<Footer  />', () => {
   it('should match snapshot', () => {

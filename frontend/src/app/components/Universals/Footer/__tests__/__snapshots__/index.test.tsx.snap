@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer  /> should match snapshot 1`] = `
+<div
+  class="MuiBox-root css-12eyfu8"
+>
+  <p
+    class="MuiTypography-root MuiTypography-body1 css-plxji9-MuiTypography-root"
+  >
+     
+    © 2024 Private Journal - Developed by Prabhanjan Kulkarni
+  </p>
+</div>
+`;

@@ -83,11 +83,13 @@ Object {
               role="combobox"
               tabindex="0"
             >
-              <span
-                class="notranslate"
+              <div
+                style="display: flex;"
               >
-                ​
-              </span>
+                <div>
+                  Normal Text
+                </div>
+              </div>
             </div>
             <input
               aria-hidden="true"
@@ -95,7 +97,7 @@ Object {
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="Heading"
               tabindex="-1"
-              value=""
+              value="7"
             />
             <svg
               aria-hidden="true"
@@ -477,11 +479,13 @@ Object {
             role="combobox"
             tabindex="0"
           >
-            <span
-              class="notranslate"
+            <div
+              style="display: flex;"
             >
-              ​
-            </span>
+              <div>
+                Normal Text
+              </div>
+            </div>
           </div>
           <input
             aria-hidden="true"
@@ -489,7 +493,7 @@ Object {
             class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             name="Heading"
             tabindex="-1"
-            value=""
+            value="7"
           />
           <svg
             aria-hidden="true"
