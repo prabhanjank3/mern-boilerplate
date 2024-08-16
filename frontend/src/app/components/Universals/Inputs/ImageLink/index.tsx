@@ -1,27 +1,28 @@
-import { TextField, Button } from '@mui/material';
+import { TextField } from '@mui/material';
 import React, { useState } from 'react';
+import { ImageLinkFieldProps } from 'types/InputProps/imageLink';
 
-export default function ImageLink({ onSubmit }) {
-  const [url, setUrl] = useState('');
+export default function ImageLink({
+  name,
+  onChange,
+  preview = false,
+  value,
+}: ImageLinkFieldProps) {
+  const [url, setUrl] = useState<string | null>(null);
   return (
     <div style={{ display: 'flex' }}>
       <TextField
         type="url"
         placeholder="Image URL"
         size="small"
-        sx={{ mr: 2 }}
+        value={value || url}
         onChange={e => {
-          setUrl(e.target.value);
+          const changeUrl = e.target.value;
+          setUrl(changeUrl);
+          onChange(name, e.target.value);
         }}
       />
-      <Button
-        variant="contained"
-        onClick={() => {
-          onSubmit(url);
-        }}
-      >
-        Submit
-      </Button>
+      {preview && url && <img src={url} alt="name" />}
     </div>
   );
 }

@@ -22,7 +22,7 @@ const DynamicTabs = ({ onSubmit }) => {
           onError={err => window.alert('Something went wrong: ' + err)}
         />
       ) : (
-        <ImageLink onSubmit={onSubmit} />
+        <ImageLink name="image-link" label="Image Link" onChange={onSubmit} />
       )}
     </Box>
   );

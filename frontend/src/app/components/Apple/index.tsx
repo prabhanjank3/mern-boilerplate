@@ -4,8 +4,9 @@
  *
  */
 import * as React from 'react';
-import Tiptap from '../Universals/Inputs/TiptapEditor';
 import SelectField from '../Universals/Inputs/Dropdown';
+import TextFieldInput from '../Universals/Inputs/Text';
+import TimeFieldInput from '../Universals/Inputs/Time';
 
 export function Apple() {
   return (
@@ -21,7 +22,23 @@ export function Apple() {
           console.log(name, value);
         }}
       />
-      <Tiptap addHeadingNode />
+      <TextFieldInput
+        name="name"
+        label="Label"
+        onChange={(name, value) => {
+          console.log(name, value);
+        }}
+        meta={{ isValid: false, messages: ['This is wrong'] }}
+      />
+      <TimeFieldInput
+        name="time"
+        label="time"
+        onChange={(name, value) => {
+          console.log(name, value);
+        }}
+        extraAttributes={{}}
+        meta={{ isValid: false, messages: ['This is wrong'] }}
+      />
     </div>
   );
 }

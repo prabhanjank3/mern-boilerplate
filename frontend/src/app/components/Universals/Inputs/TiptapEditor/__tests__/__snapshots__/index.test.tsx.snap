@@ -41,6 +41,7 @@ Object {
               aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="Font"
+              style="font-family: body2.fontFamily;"
               tabindex="-1"
               value="\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
             />
@@ -96,6 +97,7 @@ Object {
               aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="Heading"
+              style="font-family: body2.fontFamily;"
               tabindex="-1"
               value="7"
             />
@@ -437,6 +439,7 @@ Object {
             aria-invalid="false"
             class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             name="Font"
+            style="font-family: body2.fontFamily;"
             tabindex="-1"
             value="\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
           />
@@ -492,6 +495,7 @@ Object {
             aria-invalid="false"
             class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             name="Heading"
+            style="font-family: body2.fontFamily;"
             tabindex="-1"
             value="7"
           />

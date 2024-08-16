@@ -49,6 +49,11 @@ export default function SelectField({
         onChange={handleChange}
         name={name}
         value={value}
+        inputProps={{
+          style: {
+            fontFamily: 'body2.fontFamily',
+          },
+        }}
         {...(extraAttributes as Object)}
       >
         {options.map(option => {
