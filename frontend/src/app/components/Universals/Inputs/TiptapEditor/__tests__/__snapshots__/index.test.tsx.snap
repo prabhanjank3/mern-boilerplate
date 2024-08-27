@@ -12,7 +12,7 @@ Object {
           class="MuiBox-root css-1dr59fg"
         >
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall editor-menu-item css-1wd1vnu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-sizeSmall editor-menu-item css-vtys0s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
           >
             <div
               aria-controls=":r0:"
@@ -41,7 +41,7 @@ Object {
               aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="Font"
-              style="font-family: body2.fontFamily;"
+              style="font-family: \\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif; font-size: 0.875rem;"
               tabindex="-1"
               value="\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
             />
@@ -72,7 +72,7 @@ Object {
             </fieldset>
           </div>
           <div
-            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall editor-menu-item css-1wd1vnu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+            class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-sizeSmall editor-menu-item css-vtys0s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
           >
             <div
               aria-controls=":r1:"
@@ -97,7 +97,7 @@ Object {
               aria-invalid="false"
               class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
               name="Heading"
-              style="font-family: body2.fontFamily;"
+              style="font-family: \\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif; font-size: 0.875rem;"
               tabindex="-1"
               value="7"
             />
@@ -410,7 +410,7 @@ Object {
         class="MuiBox-root css-1dr59fg"
       >
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall editor-menu-item css-1wd1vnu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-sizeSmall editor-menu-item css-vtys0s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         >
           <div
             aria-controls=":r0:"
@@ -439,7 +439,7 @@ Object {
             aria-invalid="false"
             class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             name="Font"
-            style="font-family: body2.fontFamily;"
+            style="font-family: \\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif; font-size: 0.875rem;"
             tabindex="-1"
             value="\\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif"
           />
@@ -470,7 +470,7 @@ Object {
           </fieldset>
         </div>
         <div
-          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-sizeSmall editor-menu-item css-1wd1vnu-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
+          class="MuiInputBase-root MuiOutlinedInput-root MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-sizeSmall editor-menu-item css-vtys0s-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root"
         >
           <div
             aria-controls=":r1:"
@@ -495,7 +495,7 @@ Object {
             aria-invalid="false"
             class="MuiSelect-nativeInput css-yf8vq0-MuiSelect-nativeInput"
             name="Heading"
-            style="font-family: body2.fontFamily;"
+            style="font-family: \\"Roboto\\", \\"Helvetica\\", \\"Arial\\", sans-serif; font-size: 0.875rem;"
             tabindex="-1"
             value="7"
           />

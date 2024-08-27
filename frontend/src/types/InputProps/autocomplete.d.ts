@@ -25,13 +25,13 @@ interface AutoCompleteMeta {
 export interface AutoCompleteProps {
   name: string;
   label: string;
-  options: Array<CustomOption>;
+  options: Array<CustomOption> | undefined;
   /**
    * @default null
    */
-  value?: CustomOption | null;
+  value?: CustomOption | null | unknown;
   defaultValue?: CustomOption;
   onChange: func;
   meta?: AutoCompleteMeta;
-  extraAttributes?: Array<Object>;
+  extraAttributes?: Object;
 }

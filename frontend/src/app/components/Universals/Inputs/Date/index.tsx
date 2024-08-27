@@ -29,7 +29,7 @@ const DateFieldInput = ({
         views={['year', 'month', 'day']}
         format={inputFormat}
         label={label}
-        value={dayjs(value)}
+        value={dayjs(value as Date)}
         onChange={(newValue: Dayjs | null) => {
           onChange(name, newValue?.toDate()?.toLocaleDateString('en-IN'));
         }}

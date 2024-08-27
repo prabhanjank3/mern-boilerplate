@@ -8,6 +8,7 @@ import { Box } from '@mui/material';
 import { useRef } from 'react';
 import TextField from '@mui/material/TextField';
 import { InputAdornment, IconButton, useTheme } from '@mui/material';
+import { FileFieldProps } from 'types/InputProps/file';
 
 export default function FileField({
   name,
@@ -16,7 +17,7 @@ export default function FileField({
   onChange,
   extraAttributes,
   meta,
-}) {
+}: FileFieldProps) {
   const fileUploadRef = useRef<HTMLInputElement>(null);
   const theme = useTheme();
   return (
@@ -46,7 +47,7 @@ export default function FileField({
               fontSize: theme.typography.fontSize,
             },
           }}
-          value={value?.name || 'No File Selected'}
+          value={(value as File)?.name || 'No File Selected'}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">

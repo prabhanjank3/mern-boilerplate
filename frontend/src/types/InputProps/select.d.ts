@@ -6,9 +6,10 @@ interface Option {
 }
 
 export interface SelectProps {
+  label?: string;
   name: string;
   options: Option[];
-  value?: string;
+  value?: string | unknown;
   placeholder?: string;
   onChange: (name, value) => void;
   extraAttributes?: Object;

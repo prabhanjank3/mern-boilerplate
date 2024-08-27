@@ -1,4 +1,4 @@
-interface DateFieldMeta {
+interface FileFieldMeta {
   /**
    * setting isValid to false will show error on the field
    * @default false
@@ -11,19 +11,13 @@ interface DateFieldMeta {
   messages: Array<string>;
 }
 
-export interface DateFieldProps {
+export interface FileFieldProps {
   name: string;
-  /**
-   * @default new Date()
-   */
-  value?: Date | unknown | null | undefined;
+  defaultValue?: string;
+  value?: File | string | null | undefined | unknown;
   label: string;
-  /**
-   * @default "DD-MM-YYYY"
-   */
-  inputFormat?: string;
-  defaultValue?: Date;
+  placeholder?: string;
   extraAttributes?: Object;
   onChange: func;
-  meta?: DateFieldMeta;
+  meta?: TextFieldMeta;
 }

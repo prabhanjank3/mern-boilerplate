@@ -4,41 +4,16 @@
  *
  */
 import * as React from 'react';
-import SelectField from '../Universals/Inputs/Dropdown';
-import TextFieldInput from '../Universals/Inputs/Text';
-import TimeFieldInput from '../Universals/Inputs/Time';
+import DynamicForm from '../Universals/FormFactory';
+import { formConfig } from '../Universals/FormFactory/config/testConfig';
 
 export function Apple() {
+  const handleFormSubmit = (data: Record<string, unknown>) => {
+    console.log('Form Data:', data);
+  };
   return (
     <div>
-      <SelectField
-        options={[
-          { label: 'Something', value: '1' },
-          { label: 'Something2', value: '2' },
-        ]}
-        name="Something"
-        value="2"
-        onChange={(name, value) => {
-          console.log(name, value);
-        }}
-      />
-      <TextFieldInput
-        name="name"
-        label="Label"
-        onChange={(name, value) => {
-          console.log(name, value);
-        }}
-        meta={{ isValid: false, messages: ['This is wrong'] }}
-      />
-      <TimeFieldInput
-        name="time"
-        label="time"
-        onChange={(name, value) => {
-          console.log(name, value);
-        }}
-        extraAttributes={{}}
-        meta={{ isValid: false, messages: ['This is wrong'] }}
-      />
+      <DynamicForm config={formConfig} onSubmit={handleFormSubmit} />
     </div>
   );
 }

@@ -14,7 +14,7 @@ interface TextFieldMeta {
 export interface TextFieldProps {
   name: string;
   defaultValue?: string;
-  value?: string;
+  value?: string | null | undefined | unknown;
   label: string;
   placeholder?: string;
   extraAttributes?: Object;

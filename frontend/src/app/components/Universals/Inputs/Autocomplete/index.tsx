@@ -11,6 +11,7 @@ import type {
   CustomOption,
 } from 'types/InputProps/autocomplete';
 import { styled } from '@mui/material/styles';
+import { useEffect, useState } from 'react';
 
 const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   '& .MuiAutocomplete-inputRoot': {
@@ -25,15 +26,29 @@ const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
 }));
 
 const AutocompleteInputField = ({
-  name,
   label,
   options,
-  value = null,
+  value: valueProp = null,
   defaultValue,
   onChange,
   meta,
   extraAttributes,
 }: AutoCompleteProps) => {
+  const [value, setValue] = useState((options as CustomOption[])[0]);
+
+  useEffect(() => {
+    if (valueProp) {
+      setValue(valueProp as CustomOption);
+    }
+  }, [valueProp]);
+
+  const handleChange = (
+    _event: React.SyntheticEvent<Element, Event>,
+    newValue: unknown,
+  ) => {
+    setValue(newValue as CustomOption);
+    onChange(newValue);
+  };
   return (
     <StyledAutocomplete
       size="small"
@@ -41,14 +56,7 @@ const AutocompleteInputField = ({
         (option as CustomOption).id === (value as CustomOption).id
       }
       value={value}
-      onChange={(_event, newValue) => {
-        onChange(
-          name,
-          (newValue as CustomOption | null)
-            ? (newValue as CustomOption).id
-            : null,
-        );
-      }}
+      onChange={handleChange}
       getOptionLabel={option => {
         return (option as CustomOption).value;
       }}
@@ -58,7 +66,7 @@ const AutocompleteInputField = ({
         )[0]?.value || null
       }
       id="controllable-states-demo"
-      options={options}
+      options={options as CustomOption[]}
       sx={{ width: '100%' }}
       {...extraAttributes}
       renderInput={params => (

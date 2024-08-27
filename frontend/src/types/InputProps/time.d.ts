@@ -13,7 +13,7 @@ interface TimeFieldMeta {
 
 export interface TimeFieldProps {
   name: string;
-  value?: string;
+  value?: string | null | undefined | unknown;
   label: string;
   defaultValue?: Date;
   extraAttributes?: Object;
