@@ -7,6 +7,7 @@ import { combineReducers } from '@reduxjs/toolkit';
 import { InjectedReducersType } from 'utils/types/injector-typings';
 
 import { appleSlice } from './querySlice/apple.slice';
+import { habitSlice } from './querySlice/habit.slice';
 // IMPORT SLICES HERE
 
 /**
@@ -22,6 +23,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
       // eslint-disable-next-line prettier/prettier
       ...injectedReducers,
       [appleSlice.reducerPath]: appleSlice.reducer,
+      [habitSlice.reducerPath]: habitSlice.reducer,
       // INSERT REDUCERS HERE
     });
   }

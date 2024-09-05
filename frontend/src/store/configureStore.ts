@@ -3,6 +3,7 @@ import { createInjectorsEnhancer } from 'redux-injectors';
 import createSagaMiddleware from 'redux-saga';
 
 import { appleSlice } from './querySlice/apple.slice';
+import { habitSlice } from './querySlice/habit.slice';
 // IMPORT SLICES HERE
 
 import { createReducer } from './reducers';
@@ -30,7 +31,9 @@ export function configureAppStore() {
       process.env.PUBLIC_URL.length > 0,
     enhancers,
     middleware: defaultMiddleware =>
-      [...defaultMiddleware(), ...middlewares].concat(appleSlice.middleware),
+      [...defaultMiddleware(), ...middlewares]
+        .concat(appleSlice.middleware)
+        .concat(habitSlice.middleware),
     // INSERT MIDDLEWARES HERE
   });
 

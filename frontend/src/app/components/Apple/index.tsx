@@ -4,16 +4,21 @@
  *
  */
 import * as React from 'react';
-import DynamicForm from '../Universals/FormFactory';
-import { formConfig } from '../Universals/FormFactory/config/testConfig';
+import { useFetchHabitQuery } from 'store/querySlice/habit.slice';
+import Dashboard from '../Facets/Dashboard';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 export function Apple() {
-  const handleFormSubmit = (data: Record<string, unknown>) => {
-    console.log('Form Data:', data);
-  };
+  const { data } = useFetchHabitQuery(1);
+  React.useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
     <div>
-      <DynamicForm config={formConfig} onSubmit={handleFormSubmit} />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Dashboard />
+      </LocalizationProvider>
     </div>
   );
 }

@@ -1,17 +1,9 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { useSelector, useDispatch } from 'react-redux';
-import { FormLabel } from 'app/components/FormLabel';
 import { Input } from './components/Input';
-import { RepoItem } from './RepoItem';
 import { TextButton } from './components/TextButton';
-import {
-  selectUsername,
-  selectRepos,
-  selectLoading,
-  selectError,
-} from './slice/selectors';
-import { LoadingIndicator } from 'app/components/LoadingIndicator';
+import { selectUsername, selectRepos, selectError } from './slice/selectors';
 import { RepoErrorType } from './slice/types';
 import { useGithubRepoFormSlice } from './slice';
 
@@ -20,7 +12,6 @@ export function GithubRepoForm() {
 
   const username = useSelector(selectUsername);
   const repos = useSelector(selectRepos);
-  const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
 
   const dispatch = useDispatch();
@@ -52,7 +43,6 @@ export function GithubRepoForm() {
   return (
     <Wrapper>
       <FormGroup onSubmit={onSubmitForm}>
-        <FormLabel>Github Username</FormLabel>
         <InputWrapper>
           <Input
             type="text"
@@ -60,18 +50,12 @@ export function GithubRepoForm() {
             value={username}
             onChange={onChangeUsername}
           />
-          {isLoading && <LoadingIndicator small />}
         </InputWrapper>
       </FormGroup>
       {repos?.length > 0 ? (
         <List>
-          {repos.map(repo => (
-            <RepoItem
-              key={repo.id}
-              name={repo.name}
-              starCount={repo.stargazers_count}
-              url={repo.html_url}
-            />
+          {repos.map(() => (
+            <>Hello</>
           ))}
         </List>
       ) : error ? (
@@ -121,11 +105,6 @@ const FormGroup = styled.form`
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
-
-  ${FormLabel} {
-    margin-bottom: 0.25rem;
-    margin-left: 0.125rem;
-  }
 `;
 
 const List = styled.div``;
