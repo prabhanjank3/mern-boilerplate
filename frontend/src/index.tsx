@@ -34,6 +34,9 @@ import reportWebVitals from 'reportWebVitals';
 
 import CssBaseline from '@mui/material/CssBaseline';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Initialize languages
 import './locales/i18n';
 
@@ -52,9 +55,9 @@ const root = ReactDOM.createRoot(
 );
 
 const theme = createTheme(muitheme);
-
 root.render(
   <Provider store={store}>
+    <ToastContainer />
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <ThemeProvider>
