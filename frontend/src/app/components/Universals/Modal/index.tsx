@@ -1,8 +1,3 @@
-/**
- *
- * Modal
- *
- */
 import React, { useState } from 'react';
 import { Modal, Box, Button } from '@mui/material';
 

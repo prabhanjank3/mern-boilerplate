@@ -52,6 +52,8 @@ export type Habit = {
   unit: string; // e.g., "km", "hours", "kg"
   customUnit: string; // user-defined custom unit
   checklist: ChecklistItem[]; // e.g., [{ task: "Task 1" }, { task: "Task 2" }]
+  entries?: unknown[];
+  completed?: boolean;
 };
 
 const HabitForm = () => {
@@ -77,7 +79,7 @@ const HabitForm = () => {
     unitCategory: '',
     unit: '',
     customUnit: '',
-    checklist: [{ task: '' }],
+    checklist: [],
   });
 
   // Get the number of days in the current month
@@ -204,6 +206,7 @@ const HabitForm = () => {
     const rrule = new RRule(rule)
       .toString()
       .replace(/\n/g, ';')
+      .replace(':', '=')
       .replace('RRULE:', '');
 
     setFormData({

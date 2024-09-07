@@ -62,7 +62,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       completionCriteria: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('numeric', 'yes_or_no', 'checklist'),
         allowNull: false,
       },
       numericValue: {
@@ -90,5 +90,6 @@ module.exports = (sequelize) => {
       timestamps: true,
     }
   );
+
   return Habit;
 };

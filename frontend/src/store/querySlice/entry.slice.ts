@@ -29,9 +29,9 @@ export const entrySlice = createApi({
         invalidatesTags: () => {
           return ['fetch'];
         },
-        query: data => {
+        query: ({ habitId, data }) => {
           return {
-            url: '/entry/create',
+            url: `/entry/create/${habitId}`,
             method: 'POST',
             body: data,
           };

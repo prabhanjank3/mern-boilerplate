@@ -66,7 +66,10 @@ const DailyView = ({ setSelectedHabitId }) => {
                 }}
                 key={habit.id}
               >
-                <HabitItem name={habit.name} />
+                <HabitItem
+                  habit={habit}
+                  date={selectedDate?.toISOString().split('T')[0] as string}
+                />
               </Box>
             ))
           ) : (

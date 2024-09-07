@@ -22,6 +22,7 @@ router.get('/status', (req, res) => res.send('OK'));
 router.use('/docs', express.static('docs'));
 
 // Add Routes Here
+router.use('/entry', entryRoutes);
 router.use('/habit', habitRoutes);
 router.use('/apple', appleRoutes);
 router.use('/entry', entryRoutes);

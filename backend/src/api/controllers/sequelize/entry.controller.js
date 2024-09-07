@@ -3,101 +3,90 @@
  * Entry Controller
  *
  */
-
 const db = require('../../models/sequelize/index');
-const Entry = db.entry;
 
-/**
- * Create new entry
- */
-exports.createEntry = (req, resp) => {
-  Entry.create(req.body)
-    .then((data) => {
-      resp.status(201).send(data);
-    })
-    .catch((err) => {
-      console.error(err);
-      resp.status(500).send(err);
+const HabitProgress = db.entry;
+const Habit = db.habit;
+
+// Log daily progress for a habit
+exports.logHabitProgress = async (req, res) => {
+  try {
+    const { habitId } = req.params;
+    const { date, yesOrNo, numericValue, checklist } = req.body;
+
+    // Fetch the habit to ensure it exists
+    const habit = await Habit.findByPk(habitId);
+    if (!habit) {
+      return res.status(404).json({ error: 'Habit not found' });
+    }
+
+    // Log habit progress
+    const progress = await HabitProgress.create({
+      habitId,
+      date,
+      yesOrNo: yesOrNo || null,
+      numericValue: numericValue || null,
+      checklist: checklist || null,
     });
+
+    return res.status(201).json({
+      message: 'Progress logged successfully',
+      data: progress,
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: 'Failed to log progress', details: error.message });
+  }
 };
 
-/**
- * Update existing entry
- */
-exports.updateEntry = (req, resp) => {
-  Entry.update(req.body, { where: { id: req.params.id } })
-    .then(() => {
-      resp.status(200).send({
-        message: 'Entry updated Successfully',
-      });
-    })
-    .catch((err) => {
-      console.error(err);
-      resp.status(500).send({
-        message: err.message || 'Some error occurred while updating entry.',
-      });
+exports.updateHabitProgress = async (req, res) => {
+  try {
+    const { entryId } = req.params;
+
+    // Fetch the habit to ensure it exists
+    const entry = await HabitProgress.findByPk(entryId);
+    if (!entry) {
+      return res.status(404).json({ error: 'Entry not found' });
+    }
+
+    // Log habit progress
+    const progress = await HabitProgress.update(req.body, {
+      where: { id: entryId },
     });
+
+    return res.status(201).json({
+      message: 'Progress updated successfully',
+      data: progress,
+    });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: 'Failed to update progress', details: error.message });
+  }
 };
 
-/**
- * Deletes entry specified by id in params
- */
-exports.deleteEntry = (req, resp) => {
-  Entry.destroy({ where: { id: req.params.id } })
-    .then((result) => {
-      if (result === 1) {
-        resp.status(200).send({
-          message: 'Entry deleted Successfully',
-        });
-      } else {
-        resp.status(500).send({
-          message: 'Some error occurred while deleting entry.',
-        });
-      }
-    })
-    .catch((err) => {
-      resp.status(500).send({
-        message: err.message || 'Some error occurred while deleting entry.',
-      });
-    });
-};
+// Get daily progress for a habit
+exports.getHabitProgressByDate = async (req, res) => {
+  try {
+    const { habitId } = req.params;
+    const { date } = req.query;
 
-/**
- * Fetches single entry by id in params
- */
-exports.getEntry = (req, resp) => {
-  Entry.findOne({ where: { id: req.params.id } })
-    .then((data) => {
-      if (data) {
-        resp.status(201).send(data);
-      } else {
-        resp.status(401).send({ message: 'Entry Not Found' });
-      }
-    })
-    .catch((err) => {
-      resp.status(500).send({
-        message:
-          err.message || 'Some error occurred while retrieving the entry.',
-      });
+    const progress = await HabitProgress.findOne({
+      where: { habitId, date },
     });
-};
 
-/**
- * Fetches all entry matching by query
- */
-exports.getEntryByQuery = (req, resp) => {
-  Entry.findAll({ where: { Date: req.query } })
-    .then((data) => {
-      if (data) {
-        resp.status(201).send(data);
-      } else {
-        resp.status(401).send({ message: 'Entrys Not Found' });
-      }
-    })
-    .catch((err) => {
-      resp.status(500).send({
-        message:
-          err.message || 'Some error occurred while retrieving the entry.',
-      });
+    if (!progress) {
+      return res.status(404).json({ error: 'No progress found for this date' });
+    }
+
+    return res.status(200).json({
+      message: 'Progress fetched successfully',
+      data: progress,
     });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ error: 'Failed to fetch progress', details: error.message });
+  }
 };

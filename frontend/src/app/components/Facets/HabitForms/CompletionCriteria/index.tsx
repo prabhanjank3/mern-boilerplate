@@ -41,13 +41,13 @@ const HabitForm = ({ setFormData, formData }) => {
           onChange={handleInputChange}
         >
           <MenuItem value="yes_or_no">Yes or No</MenuItem>
-          <MenuItem value="numeric_value">Numeric Value</MenuItem>
+          <MenuItem value="numeric">Numeric Value</MenuItem>
           <MenuItem value="checklist">Checklist</MenuItem>
         </TextField>
       </Grid>
 
       {/* Numeric Value and Unit Selection */}
-      {formData.completionCriteria === 'numeric_value' && (
+      {formData.completionCriteria === 'numeric' && (
         <>
           <Grid item xs={6}>
             <TextField

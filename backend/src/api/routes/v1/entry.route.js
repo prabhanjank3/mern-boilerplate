@@ -5,24 +5,16 @@
  */
 
 const express = require('express');
+const habitProgressController = require('../../controllers/sequelize/entry.controller'); // Adjust the path as needed
 const router = express.Router();
-const entryController = require('../../controllers/sequelize/entry.controller');
 
-/**
- *  Creates new entry
- */
-router.post('/create', entryController.createEntry);
-/**
- *  Updates existing entry
- */
-router.post('/update', entryController.updateEntry);
-/**
- *  Deletes entry
- */
-router.get('/delete', entryController.deleteEntry);
-/**
- *  Fetches single entry by id
- */
-router.get('/get/:id', entryController.getEntry);
+// POST - Log daily progress for a habit
+router.post('/create/:habitId', habitProgressController.logHabitProgress);
+
+// GET - Get daily progress for a habit
+router.get('/get/:habitId', habitProgressController.getHabitProgressByDate);
+
+// PATCH - Update progress for a habit
+router.patch('/update/:entryId', habitProgressController.updateHabitProgress);
 
 module.exports = router;
