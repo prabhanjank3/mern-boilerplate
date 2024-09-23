@@ -5,6 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import { appleSlice } from './querySlice/apple.slice';
 import { habitSlice } from './querySlice/habit.slice';
 import { entrySlice } from './querySlice/entry.slice';
+import { journalSlice } from './querySlice/journal.slice';
 // IMPORT SLICES HERE
 
 import { createReducer } from './reducers';
@@ -35,7 +36,8 @@ export function configureAppStore() {
       [...defaultMiddleware(), ...middlewares]
         .concat(appleSlice.middleware)
         .concat(habitSlice.middleware)
-        .concat(entrySlice.middleware),
+        .concat(entrySlice.middleware)
+        .concat(journalSlice.middleware),
     // INSERT MIDDLEWARES HERE
   });
 

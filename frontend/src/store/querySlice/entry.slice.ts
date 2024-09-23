@@ -5,18 +5,18 @@
  */
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-
+import { journalSlice } from './journal.slice';
 export const entrySlice = createApi({
   reducerPath: `entryReducer`,
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_SERVER_URL,
   }),
-  tagTypes: ['fetch'],
+  tagTypes: ['fetchJournal', 'fetchEntry'],
   endpoints: builder => {
     return {
       fetchEntry: builder.query({
         providesTags: () => {
-          return ['fetch'];
+          return ['fetchEntry'];
         },
         query: id => {
           return {
@@ -27,7 +27,7 @@ export const entrySlice = createApi({
       }),
       addEntry: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return ['fetchJournal'];
         },
         query: ({ habitId, data }) => {
           return {
@@ -36,10 +36,15 @@ export const entrySlice = createApi({
             body: data,
           };
         },
+        onQueryStarted: (arg, api) => {
+          api.queryFulfilled.then(() => {
+            api.dispatch(journalSlice.util.invalidateTags(['fetchJournal']));
+          });
+        },
       }),
       editEntry: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return ['fetchJournal'];
         },
         query: ({ id, data }) => {
           return {
@@ -48,10 +53,15 @@ export const entrySlice = createApi({
             body: data,
           };
         },
+        onQueryStarted: (arg, api) => {
+          api.queryFulfilled.then(() => {
+            api.dispatch(journalSlice.util.invalidateTags(['fetchJournal']));
+          });
+        },
       }),
       deleteEntry: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return ['fetchJournal'];
         },
         query: id => {
           return {

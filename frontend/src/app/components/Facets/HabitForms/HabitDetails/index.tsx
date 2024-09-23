@@ -4,7 +4,7 @@
  * HabitDetails
  *
  */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   TextField,
   Checkbox,
@@ -24,7 +24,16 @@ import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import HabitCompletionForm from '../CompletionCriteria';
-import { useAddHabitMutation } from 'store/querySlice/habit.slice';
+import {
+  useAddHabitMutation,
+  useEditHabitMutation,
+} from 'store/querySlice/habit.slice';
+import { toast } from 'react-toastify';
+
+type Props = {
+  initialData?: Habit;
+  handleClose?: () => void;
+};
 
 type ChecklistItem = {
   task: string;
@@ -37,7 +46,7 @@ export type Habit = {
   endDate: Dayjs | null;
   isArchived: boolean;
   description: string;
-  category: 'Health' | 'Productivity' | 'Learning' | 'Fitness' | 'Other';
+  category: 'Health' | 'Productivity' | 'Learning' | 'Fitness' | 'Other' | '';
   priority: number;
   frequency: string;
   rawDaysOfYearInput: number | string;
@@ -56,31 +65,47 @@ export type Habit = {
   completed?: boolean;
 };
 
-const HabitForm = () => {
+const initialValues: Habit = {
+  name: '',
+  startDate: null,
+  endDate: null,
+  isArchived: false,
+  description: '',
+  category: '',
+  priority: 1,
+  frequency: '',
+  rawDaysOfYearInput: 0,
+  daysOfWeek: [],
+  daysOfMonth: [],
+  daysOfYear: [],
+  xDays: 1,
+  rrule: '',
+  // Completion Criteria
+  completionCriteria: 'yes_or_no',
+  numericValue: 0,
+  unitCategory: '',
+  unit: '',
+  customUnit: '',
+  checklist: [],
+};
+
+const HabitForm = ({
+  handleClose = () => {},
+  initialData = initialValues,
+}: Props) => {
   const [createHabit] = useAddHabitMutation();
-  const [formData, setFormData] = useState<Habit>({
-    name: '',
-    startDate: null,
-    endDate: null,
-    isArchived: false,
-    description: '',
-    category: 'Other',
-    priority: 1,
-    frequency: '',
-    rawDaysOfYearInput: 0,
-    daysOfWeek: [],
-    daysOfMonth: [],
-    daysOfYear: [],
-    xDays: 1,
-    rrule: '',
-    // Completion Criteria
-    completionCriteria: 'yes_or_no',
-    numericValue: 0,
-    unitCategory: '',
-    unit: '',
-    customUnit: '',
-    checklist: [],
-  });
+  const [updateHabit] = useEditHabitMutation();
+
+  const [formData, setFormData] = useState<Habit>(initialValues);
+
+  useEffect(() => {
+    setFormData({
+      ...formData,
+      ...initialData,
+      startDate: dayjs(initialData.startDate),
+      endDate: dayjs(initialData.endDate),
+    });
+  }, [initialData]);
 
   // Get the number of days in the current month
   const totalDays = 31;
@@ -219,16 +244,45 @@ const HabitForm = () => {
   const handleSubmit = async event => {
     event.preventDefault();
     const string = generateRRule();
-    await createHabit({
-      ...formData,
-      rrule: string,
-      startDate: dayjs(
-        addUTCOffset(formData?.startDate?.startOf('day')),
-      ).toDate(),
-      endDate: dayjs(addUTCOffset(formData?.endDate?.endOf('day'))).toDate(),
-    }).then(result => {
-      console.log(result);
-    });
+    handleClose();
+    if (Object.keys(initialData).length) {
+      await updateHabit({
+        id: formData.id,
+        data: {
+          ...formData,
+          rrule: string,
+          startDate: dayjs(
+            addUTCOffset(formData?.startDate?.startOf('day')),
+          ).toDate(),
+          endDate: dayjs(
+            addUTCOffset(formData?.endDate?.endOf('day')),
+          ).toDate(),
+        },
+      })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .then((result: any) => {
+          toast.success(` Updated Successfully`);
+        })
+        .catch(() => {
+          toast.error(`Something went wrong`);
+        });
+    } else {
+      await createHabit({
+        ...formData,
+        rrule: string,
+        startDate: dayjs(
+          addUTCOffset(formData?.startDate?.startOf('day')),
+        ).toDate(),
+        endDate: dayjs(addUTCOffset(formData?.endDate?.endOf('day'))).toDate(),
+      })
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .then((result: any) => {
+          toast.success(`Habit ${result.data.name} Created Successfully`);
+        })
+        .catch(() => {
+          toast.error(`Something went wrong`);
+        });
+    }
   };
 
   return (
@@ -303,6 +357,7 @@ const HabitForm = () => {
                 <MenuItem value="health">Health</MenuItem>
                 <MenuItem value="productivity">Productivity</MenuItem>
                 <MenuItem value="learning">Learning</MenuItem>
+                <MenuItem value="otherx">Other</MenuItem>
                 {/* Add other categories */}
               </Select>
             </FormControl>
@@ -459,8 +514,24 @@ const HabitForm = () => {
 
           {/* Submit Button */}
           <Grid item xs={12}>
-            <Button type="submit" variant="contained" color="primary" fullWidth>
-              Create Habit
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              sx={{ mb: 1 }}
+            >
+              {Object.keys(initialData).length > 0
+                ? 'Update Habit'
+                : 'Create Habit'}
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              sx={{ mb: 1 }}
+              onClick={handleClose}
+            >
+              Close
             </Button>
           </Grid>
         </Grid>

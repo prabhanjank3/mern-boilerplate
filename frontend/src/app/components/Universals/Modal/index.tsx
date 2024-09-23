@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Box, Button } from '@mui/material';
+import { Modal, Box } from '@mui/material';
 
 const ReusableModal = ({ TriggerComponent, ModalContent }) => {
   const [open, setOpen] = useState(false);
@@ -22,8 +22,7 @@ const ReusableModal = ({ TriggerComponent, ModalContent }) => {
             boxShadow: 24,
           }}
         >
-          {ModalContent}
-          <Button onClick={handleClose}>Close</Button>
+          {React.cloneElement(ModalContent, { handleClose })}
         </Box>
       </Modal>
     </>

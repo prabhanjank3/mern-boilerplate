@@ -9,6 +9,7 @@ import { InjectedReducersType } from 'utils/types/injector-typings';
 import { appleSlice } from './querySlice/apple.slice';
 import { habitSlice } from './querySlice/habit.slice';
 import { entrySlice } from './querySlice/entry.slice';
+import { journalSlice } from './querySlice/journal.slice';
 // IMPORT SLICES HERE
 
 /**
@@ -26,6 +27,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
       [appleSlice.reducerPath]: appleSlice.reducer,
       [habitSlice.reducerPath]: habitSlice.reducer,
       [entrySlice.reducerPath]: entrySlice.reducer,
+      [journalSlice.reducerPath]: journalSlice.reducer,
       // INSERT REDUCERS HERE
     });
   }

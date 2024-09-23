@@ -15,6 +15,9 @@ const ModalContent = ({
   customUnit,
   entries,
   onSubmit,
+  handleClose = () => {
+    console.log('Called');
+  },
 }) => {
   const [numericValue, setNumericValue] = useState(
     entries.length > 0 ? entries[0].numericValue : null,
@@ -103,14 +106,15 @@ const ModalContent = ({
     <div>
       {renderContent()}
       <Button
-        onClick={() =>
+        onClick={() => {
           onSubmit({
             numericValue,
             unitCategory,
             unit: unitCategory !== 'custom' ? unit : customUnit,
             checklist: tasks,
-          })
-        }
+          });
+          handleClose();
+        }}
         variant="contained"
         color="primary"
         style={{ marginTop: '20px' }}

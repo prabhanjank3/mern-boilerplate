@@ -5,18 +5,19 @@
  */
 
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { journalSlice } from './journal.slice';
 
 export const habitSlice = createApi({
   reducerPath: `habitReducer`,
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.REACT_APP_SERVER_URL,
   }),
-  tagTypes: ['fetch'],
+  tagTypes: ['fetchHabit', 'fetchJournal'],
   endpoints: builder => {
     return {
       fetchHabit: builder.query({
         providesTags: () => {
-          return ['fetch'];
+          return ['fetchHabit'];
         },
         query: id => {
           return {
@@ -27,7 +28,7 @@ export const habitSlice = createApi({
       }),
       addHabit: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return ['fetchJournal'];
         },
         query: data => {
           return {
@@ -36,10 +37,15 @@ export const habitSlice = createApi({
             body: data,
           };
         },
+        onQueryStarted: (arg, api) => {
+          api.queryFulfilled.then(() => {
+            api.dispatch(journalSlice.util.invalidateTags(['fetchJournal']));
+          });
+        },
       }),
       editHabit: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return ['fetchHabit'];
         },
         query: ({ id, data }) => {
           return {
@@ -51,7 +57,7 @@ export const habitSlice = createApi({
       }),
       deleteHabit: builder.mutation({
         invalidatesTags: () => {
-          return ['fetch'];
+          return [];
         },
         query: id => {
           return {
